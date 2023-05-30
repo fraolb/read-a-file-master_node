@@ -28,16 +28,20 @@ const convertToUpperCase = (fileContents) => {
 // Define a function to read and convert the file contents, use the then and catch blocks here
 const readAndConvertFileContents = (fileName, cb) => {
   try {
-    data = 
-    read(fileName)
-      .then((result) => {
-        convertToUpperCase(result);
-      })
+    // data = 
+    // read(fileName)
+    //   .then((result) => {
+    //     convertToUpperCase(result);
+    //   })
       // .then((val) => {
       //   console.log("the upper case arrays are2 ", val);
       // });
 
-    console.log("the upper case arrays are ", data);
+    const file = fs.readFileSync(fileName, 'utf8')
+    const data = file.toUpperCase().split(',')
+
+
+    //console.log("the upper case arrays are ", data);
     cb(null, data);
   } catch (err) {
     cb("Encountered error while reading file contents..!");
